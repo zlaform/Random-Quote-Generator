@@ -47,6 +47,7 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
+//This will generate a random quote to pass to the PrintQuote 
 function getRandomQuote (){
   let random = 0;
 for ( let i = 0; i < quotes.length; i++){
@@ -54,8 +55,6 @@ for ( let i = 0; i < quotes.length; i++){
 }
 return random;
 }
-// Generates a random quote and checks it for the year, source and citation and prints accordingly 
-
 /***
  * `printQuote` function
 ***/
@@ -98,8 +97,6 @@ function printQuote () {
     background();
   }
   return print;
-
-
 }
 /***
  * click event listener for the print quote button
