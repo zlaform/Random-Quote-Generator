@@ -50,7 +50,7 @@ const quotes = [
 function getRandomQuote (){
   let random = 0;
 for ( let i = 0; i < quotes.length; i++){
-   random = quotes[Math.floor( Math.random() * (5))];
+   random = quotes[Math.floor( Math.random() * (5)+1)];
 }
 return random;
 }
@@ -76,15 +76,19 @@ setInterval(function(){
 function printQuote () {
   let print = '';
   for ( let i = 0; i < quotes.length; i++){
+    let random = getRandomQuote();
     let quote = `   
-       <p class="quote">${getRandomQuote().quote}</h2>
-      <p class="source"> ${getRandomQuote().source} `;
-    if (getRandomQuote().year !== "" &&  getRandomQuote().citation !== ""){
-      quote += ` - ${getRandomQuote().year}`;
+       <p class="quote">${random.quote}</h2>
+      <p class="source"> ${random.source} `;
+    if (random.year !== "" &&  random.citation !== ""){
+      quote += ` - ${random.year} ${random.citation}`;
     }
-    if (getRandomQuote().citation !== ""){
-        quote += `${getRandomQuote().citation}`
+    else if (random.year !== "" && random.citation === ""){
+        quote += `~ ${random.year}`
     }
+    else if (random.year === "" && random.citation !== ""){
+      quote += `${random.citation}`
+  }
     print = document.querySelector('div').innerHTML = `${quote}`;
   }
   return print;
