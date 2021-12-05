@@ -79,17 +79,23 @@ function printQuote () {
     let random = getRandomQuote();
     let quote = `   
        <p class="quote">${random.quote}</h2>
-      <p class="source"> ${random.source} `;
+        <p class="source"> ${random.source}</p>`;
     if (random.year !== "" &&  random.citation !== ""){
-      quote += ` - ${random.year} ${random.citation}`;
+      quote = `<p class="quote">${random.quote}</h2>
+        <p class="source"> ${random.source} ~ ${random.year}
+        ${random.citation}`;
     }
     else if (random.year !== "" && random.citation === ""){
-        quote += `~ ${random.year}`
+      quote = `<p class="quote">${random.quote}</h2>
+      <p class="source"> ${random.source} ~ ${random.year}`;
     }
-    else if (random.year === "" && random.citation !== ""){
-      quote += `${random.citation}`
+    else{
+      quote = `<p class="quote">${random.quote}</h2>
+        <p class="source"> ${random.source}
+        ${random.citation}`;
   }
-    print = document.querySelector('div').innerHTML = `${quote}${background()}`;
+    print = document.querySelector('div').innerHTML = `${quote}`;
+    background();
   }
   return print;
 
