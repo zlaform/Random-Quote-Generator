@@ -89,9 +89,11 @@ function printQuote () {
     else if (random.year === "" && random.citation !== ""){
       quote += `${random.citation}`
   }
-    print = document.querySelector('div').innerHTML = `${quote}`;
+    print = document.querySelector('div').innerHTML = `${quote}${background()}`;
   }
   return print;
+
+
 }
 /***
  * click event listener for the print quote button
