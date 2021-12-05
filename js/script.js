@@ -13,39 +13,33 @@ project 1 - A Random Quote Generator
 
 // Object array to store all of the quotes
 const quotes = [
-  {quote:'The journey of a thousand miles begins with one step.',
-  author:'Lao Tzu',
-  source: "",
-  year: "",
-  citation: ""
+  { quote:'The journey of a thousand miles begins with one step.',
+    source:'Lao Tzu',
+    year: "",
+    citation: ""
   },
   { quote:'Life is what happens when you’re busy making other plans.',
-    author:'John Lennon',
-    source: 'Readers Digest',
+  source:'John Lennon',
     year: 1957,
     citation: ""
   },
   { quote:'You miss 100 percent of the shots you never take.',
-    author:'Wayne Gretzky',
-    source: 'Hockey News',
+    source:'Wayne Gretzky',
     year: 1983,
     citation: ""
   },
   { quote:'You only live once, but if you do it right, once is enough.',
-    author:'Mae West',
-    source: "",
+    source:'Mae West',
     year: "",
     citation: ""
   },
   {quote:'Get busy living or get busy dying.',
-   author:'Stephen King',
-   source: 'The Shawshank Redemption',
-   year: "",
+    source:'Stephen King',
+    year: "",
     citation: `<p><cite>Darabont, Frank, director. The Shawshank Redemption. Columbia, 1994.</cite></p>`
   },
   { quote:'Tis better to have loved and lost than to have never loved at all.',
-    author:'Alrded Lord Tennyson',
-    source: "",
+    source:'Alrded Lord Tennyson',
     year: "",
     citation: ""
   }
@@ -53,29 +47,14 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
-
-// Generates a random quote and checks it for the year, source and citation and prints accordingly 
 function getRandomQuote (){
-  let quote = '';
-  for ( let i = 0; i < quotes.length; i++){
-    let random = quotes[Math.floor( Math.random() * (5)+1)];
-   
-    quote = `
-       <p class="quote">${random.quote}</h2>
-      <p class="source"> ${random.author} `;
-    if (random.year !== "" ){
-      quote += ` - ${random.year}`;
-    }
-    if (random.source !== ""){
-      quote += ` ~ ${random.source}</p>`
-    }
-    if (random.citation !== ""){
-        quote += `${random.citation}`
-    }
-  }
-  return quote;
-  
+  let random = 0;
+for ( let i = 0; i < quotes.length; i++){
+   random = quotes[Math.floor( Math.random() * (5))];
 }
+return random;
+}
+// Generates a random quote and checks it for the year, source and citation and prints accordingly 
 
 /***
  * `printQuote` function
@@ -95,9 +74,20 @@ setInterval(function(){
 
 //prints the quote to div based on what is provided from getRandomQuote
 function printQuote () {
-  document.querySelector('div').innerHTML = `${getRandomQuote()} `;
-  background();
-  
+  let print = '';
+  for ( let i = 0; i < quotes.length; i++){
+    let quote = `   
+       <p class="quote">${getRandomQuote().quote}</h2>
+      <p class="source"> ${getRandomQuote().source} `;
+    if (getRandomQuote().year !== "" &&  getRandomQuote().citation !== ""){
+      quote += ` - ${getRandomQuote().year}`;
+    }
+    if (getRandomQuote().citation !== ""){
+        quote += `${getRandomQuote().citation}`
+    }
+    print = document.querySelector('div').innerHTML = `${quote}`;
+  }
+  return print;
 }
 /***
  * click event listener for the print quote button
